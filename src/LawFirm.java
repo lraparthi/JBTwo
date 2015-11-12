@@ -1,3 +1,10 @@
+/*
+ * Melanie Johnson
+ * Haruka Konishi
+ * Lehareen Raparthi
+ * 
+ */
+
 //<<<<<<< HEAD
 import javax.swing.JOptionPane;
 
@@ -293,7 +300,6 @@ public class LawFirm {
 	}
 	
 	public static void edit(Case [] cases) {
-			public static void edit(Case [] cases) {
 		String message = "Which case number would you like to edit";
 		Case randoCase = cases[0];
 		for (int x = 0; x < cases[0].getTotalCases(); x++) {
@@ -495,6 +501,13 @@ public class LawFirm {
 
 	public static void print(Case [] cases) {
 		//TO DO:
+		String output = "";
+		for (Case aCase: cases){
+			if (aCase!=null){
+				output+= aCase.toString() + "\n";			
+			}
+		}
+		JOptionPane.showMessageDialog(null, output);
 	}
 }
 
