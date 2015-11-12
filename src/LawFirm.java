@@ -293,7 +293,142 @@ public class LawFirm {
 	}
 	
 	public static void edit(Case [] cases) {
-		//TO DO:
+			public static void edit(Case [] cases) {
+		String message = "Which case number would you like to edit";
+		Case randoCase = cases[0];
+		for (int x = 0; x < cases[0].getTotalCases(); x++) {
+			int caseNum = cases[x].getCaseNum();
+			message += "\n" + (x + 1) + ". " + caseNum;
+		}
+		boolean error;
+		int option = 0;
+		do {
+			try { 
+			option = Integer.parseInt(JOptionPane.showInputDialog(null, message));
+			error = true;
+			if (option < 0 || option > cases.length) {
+				throw new IndexOutOfBoundsException();
+			}
+			}
+			catch (NumberFormatException e) {
+				error = false;
+				JOptionPane.showMessageDialog(null, "Please enter a valid number");
+			}
+			catch(IndexOutOfBoundsException e) {
+				error = false;
+				JOptionPane.showMessageDialog(null, "Please enter a valid number");
+			}
+		} while(error == false);
+		Case theCase = cases[option-1]; ////FIX XXXX
+		error = false;
+		int option1 = 0;
+		do {
+			try { 
+				option1 = Integer.parseInt(JOptionPane.showInputDialog( 
+				"What status would you like to change it to?" +
+			    "\n1. Accepted \n2. Rejected"));
+				error = false;
+				if (option1 < 1 || option1 > 2) {
+					throw new IndexOutOfBoundsException();
+				}
+			}
+			catch (NumberFormatException e) {
+				error = true;
+				JOptionPane.showMessageDialog(null, "Please enter a valid number");
+			}
+			catch (IndexOutOfBoundsException e) {
+				error = true;
+				JOptionPane.showMessageDialog(null, "Please enter a valid option");
+			}
+			
+		} while (error == false);
+		switch (option1) {
+		case (0) : 
+			if (theCase instanceof Accepted) {
+				JOptionPane.showMessageDialog(null, "The case is already accepted.");
+			}
+			else {
+				Accepted newCase = (Accepted) theCase; 
+				JOptionPane.showMessageDialog(null, "The case has been updated to accepted.");
+				int lawyer = 0;
+				do {
+					try {
+					lawyer = Integer.parseInt(JOptionPane.showInputDialog
+							("How many lawyers are in this case?"));
+							error = false;
+							if (lawyer <= 0 || lawyer > 10) {
+								throw new IndexOutOfBoundsException();
+							}
+					}
+					catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(null, "Please enter an actual number");
+						error = true;
+					}
+					catch (IndexOutOfBoundsException e) {
+						JOptionPane.showMessageDialog(null, "Please enter a valid number");
+						error = true;
+					}
+				} while (error == true);
+				newCase.setNumLawyers(lawyer);
+				int days = 0;
+				do {
+					try {
+					lawyer = Integer.parseInt(JOptionPane.showInputDialog
+							("How many number of days are in this case?"));
+							error = false;
+							if (days <= 0 || days > 10) {
+								throw new IndexOutOfBoundsException();
+							}
+					}
+					catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(null, "Please enter an actual number");
+						error = true;
+					}
+					catch (IndexOutOfBoundsException e) {
+						JOptionPane.showMessageDialog(null, "Please enter a valid number of days");
+						error = true;
+					}
+				} while (error == true);
+				newCase.setNumDaysTrial(lawyer);
+				String courthouseName;
+				do {
+					courthouseName = JOptionPane.showInputDialog
+							("What is the courthouse name?");
+							error = false;
+							if (courthouseName.equals("")) {
+								JOptionPane.showMessageDialog(null, "Please enter a courthouse name");
+								error = true;
+							}
+				} while (error == true);
+				newCase.setCourthouseName(courthouseName);
+				cases[option-1] = newCase;
+			break;
+			}
+		
+		case (1) :
+			if (theCase instanceof Rejected) {
+				JOptionPane.showMessageDialog(null, "The case is already rejected.");
+			}
+			else {
+				Rejected newCase = (Rejected) theCase; 
+				String reason = "";
+				JOptionPane.showMessageDialog(null, "The case has been updated to rejected.");
+				do {
+					reason = JOptionPane.showInputDialog
+					("What is the rejected reason?");
+					error = false;
+					if (reason.equals("")) {
+						JOptionPane.showMessageDialog(null, "Please enter a reason");
+						error = true;
+					}
+		} while (error == true);
+			newCase.setReason(reason);
+			cases[option-1] = newCase;
+			}
+		break;
+		}
+		
+	}
 	}
 	
 	public static void search (){
