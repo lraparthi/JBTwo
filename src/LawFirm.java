@@ -150,9 +150,6 @@ public class LawFirm {
 		return choice;
 	}
 	
-		return choice;
-	}
-	
 	private static int adminMenu() {
 		int choice = 0;
 		boolean error = false;
