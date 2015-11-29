@@ -95,7 +95,7 @@ public class LawFirm {
 		String password = "";
 		//gets user input for the password
 		
-		while (userName.equals("")){
+		while (password.equals("")){
 			password = JOptionPane.showInputDialog(null, "Please enter your password:", 
 			"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE);
 			if (password.equals("")){
