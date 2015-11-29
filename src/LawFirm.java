@@ -101,8 +101,9 @@ public class LawFirm {
 			if (password.equals("")){
 				JOptionPane.showMessageDialog(null, "Please enter your password!");
 		}
+		}
 
-		} while(menuError == 0);
+		
 		boolean error;
 		//the method in user is created that checks credientals
 		User user = new User(userName, password);
