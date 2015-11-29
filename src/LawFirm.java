@@ -239,24 +239,6 @@ public class LawFirm {
 				}
 			} while(error == true);
 			theCase.setTitle(title);
-			do {
-				try {
-					title = JOptionPane.showInputDialog(null, 
-					"Please enter the case title:", 
-					"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE);
-					error = false;
-					if (title == null) {
-						error = true;
-						JOptionPane.showMessageDialog(null,  "Please enter a valid title", 
-						"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
-						
-					}
-				}
-				catch(NullPointerException e) {
-				break;
-				}
-			} while(error == true);
-			theCase.setTitle(title);
 			int status = 0; 
 			do {
 				try {
