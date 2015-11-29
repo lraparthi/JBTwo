@@ -417,7 +417,6 @@ public class LawFirm {
 		}
 		
 	}
-	}
 	
 	public static void search (){
 		String searchResult = "";
