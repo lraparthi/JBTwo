@@ -142,10 +142,14 @@ public class LawFirm {
 				"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
 				error = true;
 			}
-			catch(NullPointerException e) {
+			/*catch(NullPointerException e) {
+				error = true;
 				break;
-			}
-		} while(error = true);
+			}*/
+		} while(error == true);
+		return choice;
+	}
+	
 		return choice;
 	}
 	
