@@ -24,12 +24,12 @@ public class LawFirm {
 	do {
 		try {
          		login = showLoginMenu();
-		      	if (login.equals("")){
-			choice = (int)JOptionPane.showInputDialog
+         		System.out.println(login);
+		      	if (login == null){
+		      	choice = (int)(JOptionPane.showConfirmDialog
 				(null, "You have entered an incorrect password"
 				+ " or username. Would you like to try again?", 
-				"JavaBeaners Law Firm", JOptionPane.YES_NO_OPTION,
-				null, args, JOptionPane.QUESTION_MESSAGE);
+				"JavaBeaners Law Firm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE));
 			      	if (choice != 0) {
 				      JOptionPane.showMessageDialog(null, "Goodbye!", "JavaBeaners Law Firm",
 					JOptionPane.INFORMATION_MESSAGE);
