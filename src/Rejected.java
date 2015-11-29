@@ -1,5 +1,5 @@
 
-public class Rejected {
+public class Rejected extends Case {
 	
 	private String reason;
 	
