@@ -278,7 +278,6 @@ public class LawFirm {
 				theCase.setStatus("Pending");
 				break;
 			}
-		}
 	}
 	
 	public static void edit(Case [] cases) {
