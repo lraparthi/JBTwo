@@ -22,22 +22,26 @@ public class LawFirm {
 	String login = "";
 	
 	do {
-		login = showLoginMenu();
-		if (login.equals("")){
-			
+		try {
+         		login = showLoginMenu();
+		      	if (login.equals("")){
 			choice = (int)JOptionPane.showInputDialog
-					(null, "You have entered an incorrect password"
-					+ " or username. Would you like to try again?", 
-					"JavaBeaners Law Firm", JOptionPane.YES_NO_OPTION,
-					null, args, JOptionPane.QUESTION_MESSAGE);
-			if (choice != 0) {
-				JOptionPane.showMessageDialog(null, "Goodbye!", "JavaBeaners Law Firm",
-						JOptionPane.INFORMATION_MESSAGE);
-				break;
-			}
-		}
+				(null, "You have entered an incorrect password"
+				+ " or username. Would you like to try again?", 
+				"JavaBeaners Law Firm", JOptionPane.YES_NO_OPTION,
+				null, args, JOptionPane.QUESTION_MESSAGE);
+			      	if (choice != 0) {
+				      JOptionPane.showMessageDialog(null, "Goodbye!", "JavaBeaners Law Firm",
+					JOptionPane.INFORMATION_MESSAGE);
+				      break;
+			      	}
+		      }
+      		}
+      		catch(NullPointerException e) {
+         	login = "";
+      		}
+      
 	} while (choice == 0 && login.equals(""));
-	
 	//if it is a secretarial type the user can
 	//create new cases, see all cases, search the cases by certain criteria, 
 	//and create text files based on her search results.
