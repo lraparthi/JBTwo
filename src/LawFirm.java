@@ -84,40 +84,24 @@ public class LawFirm {
 		int menuError = 0;
 		
 		//gets the user input for the username. 
-		do {
-			try { 
-				userName = JOptionPane.showInputDialog(null, "Please enter your username:", 
-				"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE);
-				menuError = 1;
-				if (userName.equals("")) {
-					throw new NullPointerException();
-				}
-			}
-			//the program asks for a username until 
-			catch (NullPointerException e) {
-				JOptionPane.showMessageDialog(null, "Goodbye!", "JavaBeaners Law Firm", 
-				JOptionPane.INFORMATION_MESSAGE);
-				menuError = 0;
-			}
-		} while(menuError == 0);
-		//Creates a new user object that takes in a username and password
 		
+		while (userName.equals("")){
+			userName = JOptionPane.showInputDialog(null, "Please enter your username:", 
+			"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE);
+			if (userName.equals("")){
+				JOptionPane.showMessageDialog(null, "Please enter your username!");
+			}
+		}
 		String password = "";
 		//gets user input for the password
-		do {
-			try { 
-				password = JOptionPane.showInputDialog(null, "Please enter your password:", 
-				"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE);
-				menuError = 1;
-				if (password.equals("")) {
-					throw new NullPointerException();
-				}
-			}
-			catch (NullPointerException e) {
-				JOptionPane.showMessageDialog(null, "Goodbye!", "JavaBeaners Law Firm", 
-				JOptionPane.INFORMATION_MESSAGE);
-				menuError = 0;
-			}
+		
+		while (userName.equals("")){
+			password = JOptionPane.showInputDialog(null, "Please enter your password:", 
+			"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE);
+			if (password.equals("")){
+				JOptionPane.showMessageDialog(null, "Please enter your password!");
+		}
+
 		} while(menuError == 0);
 		boolean error;
 		//the method in user is created that checks credientals
