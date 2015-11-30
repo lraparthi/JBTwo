@@ -70,9 +70,12 @@ public class LawFirm {
 				break;
 			case 9999:
 				JOptionPane.showMessageDialog(null, "Goodbye!");
-				break;
+				System.exit(0);
+				
+			default: 
+				JOptionPane.showMessageDialog(null, "Please enter options 1-4 !");
 			}
-	} while(option == 9999);
+	} while( JOptionPane.showConfirmDialog(null, "Continue to the menu?") == JOptionPane.YES_OPTION);
 }
 
 	/**
@@ -125,7 +128,7 @@ public class LawFirm {
 			try { 
 				choice = Integer.parseInt(JOptionPane.showInputDialog(null, 
 				"Please choose an option from the list:"
-				+ "\n1.Create New Case \n2.Edit Case \n3.Search Cases \n4.Print \5. Exit", 
+				+ "\n1.Create New Case \n2.Edit Case \n3.Search Cases \n4.Print \n5. Exit", 
 				"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE));
 				error = false;
 				if (choice < 1 || choice > 5) {
@@ -158,7 +161,7 @@ public class LawFirm {
 			try { 
 				choice = Integer.parseInt(JOptionPane.showInputDialog(null, 
 				"Please choose an option from the list:"
-				+ "1.Edit Case \n2.Search Cases \n3.Print 4.Exit", 
+				+ "1.Edit Case \n2.Search Cases \n3.Print \n4.Exit", 
 				"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE));
 				error = false;
 				if (choice < 1 || choice > 4) {
