@@ -58,12 +58,12 @@ public class LawFirm {
 				option = 9999;
 			}
 		} 
-		Case updatedCase = new Case();
+		
 		
 			switch (option) {
-			case 1 : updatedCase = addCase(cases);
-					int n = cases[0].getTotalCases();
-					cases[n-2] = updatedCase;
+			case 1 : 
+			       int n = cases[0].getTotalCases();
+			       cases[n] = addCase(cases);
 					
 					System.out.println(cases[0].getTotalCases());
 					break;
@@ -283,7 +283,7 @@ public class LawFirm {
 	
 	public static void edit(Case [] cases) {
 		String message = "Which case number would you like to edit";
-		for (int x = 0; x < cases[0].getTotalCases()-2; x++) {
+		for (int x = 0; x < cases[0].getTotalCases(); x++) {
 			int caseNum = cases[x].getCaseNum();
 			message += "\n" + (x + 1) + ". " + caseNum;
 		}
@@ -293,7 +293,7 @@ public class LawFirm {
 			try { 
 			option = Integer.parseInt(JOptionPane.showInputDialog(null, message));
 			error = true;
-			if (option < 0 || option > cases[0].getTotalCases()-2) {
+			if (option < 0 || option > cases[0].getTotalCases()) {
 				throw new IndexOutOfBoundsException();
 			}
 			}
