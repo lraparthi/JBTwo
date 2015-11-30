@@ -58,8 +58,14 @@ public class LawFirm {
 				option = 9999;
 			}
 		} 
+		Case updatedCase = new Case();
+		
 			switch (option) {
-			case 1 : addCase(cases);
+			case 1 : updatedCase = addCase(cases);
+					int n = cases[0].getTotalCases();
+					cases[n-2] = updatedCase;
+					
+					System.out.println(cases[0].getTotalCases());
 					break;
 			case 2: edit(cases);
 					break;
@@ -185,13 +191,13 @@ public class LawFirm {
 	}
 	
 	
-	private static void addCase(Case [] cases) {
+	private static Case addCase(Case [] cases) {
 		Case theCase = new Case();
 		int num = 0;
 		if (theCase.getTotalCases() > cases.length) {
 			JOptionPane.showMessageDialog(null,  "You cannot add anymore cases!", 
 			"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
-			return;
+			return null;
 		}
 		
 		else {
@@ -272,11 +278,12 @@ public class LawFirm {
 				break;
 			}
 		}
+		return theCase;
 	}
 	
 	public static void edit(Case [] cases) {
 		String message = "Which case number would you like to edit";
-		for (int x = 0; x < cases[0].getTotalCases(); x++) {
+		for (int x = 0; x < cases[0].getTotalCases()-2; x++) {
 			int caseNum = cases[x].getCaseNum();
 			message += "\n" + (x + 1) + ". " + caseNum;
 		}
@@ -286,7 +293,7 @@ public class LawFirm {
 			try { 
 			option = Integer.parseInt(JOptionPane.showInputDialog(null, message));
 			error = true;
-			if (option < 0 || option > cases[0].getTotalCases()) {
+			if (option < 0 || option > cases[0].getTotalCases()-2) {
 				throw new IndexOutOfBoundsException();
 			}
 			}
@@ -484,3 +491,23 @@ public class LawFirm {
 	}
 }
 
+/*
+	public static void print(Case [] cases) throws FileNotFoundException {
+		//TO DO:
+		String output = "";
+		for (Case aCase: cases){
+			if (aCase!=null){
+				output+= aCase.toString() + "\n";			
+			}
+		}
+		String filename = "./src/allCases.txt";
+		PrintWriter pw = new PrintWriter(new FileOutputStream(filename));
+		
+		pw.write(output);
+		pw.close();
+		
+		JOptionPane.showMessageDialog(null, output);
+	}
+}
+
+*/
