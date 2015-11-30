@@ -55,7 +55,7 @@ public class LawFirm {
 		}
 		else {
 			option = adminMenu();
-			if (option == 4) {
+			if (option == 5) {
 				option = 9999;
 			}
 		} 
@@ -179,10 +179,10 @@ public class LawFirm {
 				error = true;
 			}
 			catch(NullPointerException e) {
-				break;
+				return 5;
 			}
-		} while(error = true);
-		return choice;
+		} while(error == true);
+		return choice+1;
 	}
 	
 	
