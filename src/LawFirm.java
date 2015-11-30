@@ -277,7 +277,7 @@ public class LawFirm {
 	
 	public static void edit(Case [] cases) {
 		String message = "Which case number would you like to edit";
-		for (int x = 0; x < cases.getTotalCases(); x++) {
+		for (int x = 0; x < cases[0].getTotalCases(); x++) {
 			int caseNum = cases[x].getCaseNum();
 			message += "\n" + (x + 1) + ". " + caseNum;
 		}
@@ -287,7 +287,7 @@ public class LawFirm {
 			try { 
 			option = Integer.parseInt(JOptionPane.showInputDialog(null, message));
 			error = true;
-			if (option < 0 || option > cases.getTotalCases()) {
+			if (option < 0 || option > cases[0].getTotalCases()) {
 				throw new IndexOutOfBoundsException();
 			}
 			}
