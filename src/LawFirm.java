@@ -88,106 +88,42 @@ public class LawFirm {
 	 * @return
 	 */
 	private static String showLoginMenu() {
-		String userName = "";
-		int menuError = 0;
-		
-		//gets the user input for the username. 
-		
-		while (userName.equals("")){
-			userName = JOptionPane.showInputDialog(null, "Please enter your username:", 
-			"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE);
-			if (userName.equals("")){
-				JOptionPane.showMessageDialog(null, "Please enter your username!");
-			}
-		}
-		String password = "";
-		//gets user input for the password
-		
-		while (password.equals("")){
-			password = JOptionPane.showInputDialog(null, "Please enter your password:", 
-			"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE);
-			if (password.equals("")){
-				JOptionPane.showMessageDialog(null, "Please enter your password!");
-		}
-		}
-
-		
-		boolean error;
-		//the method in user is created that checks credientals
-		User user = new User(userName, password);
-		error = user.checkCredentials();
-		if (error = false) {
-			return "";
-		}
-		else {
-			//Calls the method to set the type of user that 
-			String type = user.getType();
-			return type;
-		}
-	}
-	
-	private static int secretaryMenu() {
-		int choice = 0;
-		boolean error = false;
-		do {
-			try { 
-				choice = Integer.parseInt(JOptionPane.showInputDialog(null, 
-				"Please choose an option from the list:"
-				+ "\n1.Create New Case \n2.Edit Case \n3.Search Cases \n4.Print \n5. Exit", 
-				"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE));
-				error = false;
-				if (choice < 1 || choice > 5) {
-					throw new IndexOutOfBoundsException();
+		String userName="";
+		String password="";
+		String[] options = {"Try Again", "Quit"};
+		while(true){
+			userName = "";			
+			//gets the user input for the username. 			
+			while (userName.equals("")){
+				userName = JOptionPane.showInputDialog(null, "Please enter your username:", 
+				"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE);
+				if (userName.equals("")){
+					JOptionPane.showMessageDialog(null, "Please enter your username!");
 				}
 			}
-			catch(NumberFormatException e) {
-				JOptionPane.showMessageDialog(null,  "Please enter a valid #", 
-				"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
-				error = true;
+			
+			password = "";			
+			//gets user input for the password
+			while (password.equals("")){
+				password = JOptionPane.showInputDialog(null, "Please enter your password:", 
+				"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE);
+				if (password.equals("")){
+					JOptionPane.showMessageDialog(null, "Please enter your password!");
+				}
 			}
-			catch(IndexOutOfBoundsException e) {
-				JOptionPane.showMessageDialog(null,  "Please enter a valid #", 
-				"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
-				error = true;
-			}
-			/*catch(NullPointerException e) {
-				error = true;
+			
+			if(User.exists(userName, password)){
 				break;
-			}*/
-		} while(error == true);
-		return choice;
-	}
-	
-	
-	private static int adminMenu() {
-		int choice = 0;
-		boolean error = false;
-		do {
-			try { 
-				choice = Integer.parseInt(JOptionPane.showInputDialog(null, 
-				"Please choose an option from the list:"
-				+ "\n1.Edit Case \n2.Search Cases \n3.Print \n4.Exit", 
-				"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE));
-				error = false;
-				if (choice < 1 || choice > 4) {
-					throw new IndexOutOfBoundsException();
+			}
+			else{
+				int choice = JOptionPane.showOptionDialog(null, "Account not found.  What would you like to do?", "poo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+				if (choice == 1){
+					System.exit(0);
 				}
 			}
-			catch(NumberFormatException e) {
-				JOptionPane.showMessageDialog(null,  "Please enter a valid #", 
-				"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
-				error = true;
-			}
-			catch(IndexOutOfBoundsException e) {
-				JOptionPane.showMessageDialog(null,  "Please enter a valid #", 
-				"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
-				error = true;
-			}
-			catch(NullPointerException e) {
-				return 5;
-			}
-		} while(error == true);
-		return choice+1;
+		}
+		
+		return User.getType();
 	}
 	
 	
