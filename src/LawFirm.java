@@ -161,7 +161,7 @@ public class LawFirm {
 			try { 
 				choice = Integer.parseInt(JOptionPane.showInputDialog(null, 
 				"Please choose an option from the list:"
-				+ "1.Edit Case \n2.Search Cases \n3.Print \n4.Exit", 
+				+ "\n1.Edit Case \n2.Search Cases \n3.Print \n4.Exit", 
 				"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE));
 				error = false;
 				if (choice < 1 || choice > 4) {
