@@ -150,6 +150,7 @@ public class LawFirm {
 		return choice;
 	}
 	
+	
 	private static int adminMenu() {
 		int choice = 0;
 		boolean error = false;
@@ -196,10 +197,9 @@ public class LawFirm {
 			do {
 				try {
 					num = Integer.parseInt(JOptionPane.showInputDialog(null, 
-					"Please enter the case number:", 
-					"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE));
-					error = false;
-				}
+					"Please enter the case number:", "JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE));
+					System.out.println(error);
+					}
 				catch(NumberFormatException e) {
 					JOptionPane.showMessageDialog(null,  "Please enter a valid #", 
 					"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
@@ -208,7 +208,8 @@ public class LawFirm {
 				catch(NullPointerException e) {
 				break;
 				}
-			} while(error = true);
+			} while(error);
+			
 			theCase.setCaseNum(num);
 			String title ="";
 			do {
@@ -227,14 +228,14 @@ public class LawFirm {
 				catch(NullPointerException e) {
 				break;
 				}
-			} while(error == true);
+			} while(error);
 			theCase.setTitle(title);
 			int status = 0; 
 			do {
 				try {
 					status = Integer.parseInt(JOptionPane.showInputDialog(null, 
 					"Please enter a case status: \n1.Accepted"
-					+ "\n2.Rejected\3.Pending", 
+					+ "\n2.Rejected\n3.Pending", 
 					"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE));
 					error = false;
 					if (status < 0 || status > 3) {
@@ -481,5 +482,4 @@ public class LawFirm {
 		JOptionPane.showMessageDialog(null, output);
 	}
 }
-
 
