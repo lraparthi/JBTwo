@@ -328,7 +328,7 @@ public class LawFirm {
 				JOptionPane.showMessageDialog(null, "Please enter a valid option");
 			}
 			
-		} while (error == false);
+		} while (error);
 		switch (option1) {
 		case (0) : 
 			if (theCase instanceof Accepted) {
