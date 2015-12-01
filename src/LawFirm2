@@ -5,19 +5,21 @@
  * 
  */
 
-//<<<<<<< HEAD
-import javax.swing.JOptionPane;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /*The implementation class for the JavaBeaner's Law Firm.
 The application class holds the array of case types, searches 
 through cases, collects user input & login in information*/
-public class LawFirm2 {
+public class LawFirm {
 	
 	public static final int MAXCASES = 1000;
 	public static Case [] cases = new Case[MAXCASES];
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws FileNotFoundException{
 
 	int choice = 0;
 	String login = "";
@@ -296,7 +298,7 @@ public class LawFirm2 {
 			case 2:
             theCase = (Accepted)theCase;
             int numLawyers = 0;
-            boolean error = false;
+             error = false;
             do {
                try {
                   numLawyers = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of lawyers.",  
@@ -524,35 +526,25 @@ public class LawFirm2 {
 		}
 	}
 
-	public static void print(Case [] cases) {
-		//TO DO:
+		public static void print(Case [] cases) throws FileNotFoundException {
+		
 		String output = "";
 		for (Case aCase: cases){
 			if (aCase!=null){
 				output+= aCase.toString() + "\n";			
 			}
 		}
-		JOptionPane.showMessageDialog(null, output);
-	}
-}
-
-/*
-	public static void print(Case [] cases) throws FileNotFoundException {
-		//TO DO:
-		String output = "";
-		for (Case aCase: cases){
-			if (aCase!=null){
-				output+= aCase.toString() + "\n";			
-			}
-		}
+		
 		String filename = "./src/allCases.txt";
+		
 		PrintWriter pw = new PrintWriter(new FileOutputStream(filename));
 		
 		pw.write(output);
-		pw.close();
 		
-		JOptionPane.showMessageDialog(null, output);
+		pw.close();
+		JOptionPane.showMessageDialog(null,output);
+		JOptionPane.showMessageDialog(null, "The contents of the cases have been added to a file - allCases.txt!");
+		
+		
 	}
 }
-
-*/
