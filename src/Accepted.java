@@ -18,14 +18,17 @@ public class Accepted extends Case {
 		numLawyers  = 0;
 		courthouseName = "";
 		numDaysTrial = 0;
+      notes = new Note[20];
 		
 	}
 	
-	public void setNotes(){
-		
+	public void setNotes(String information){
+	   Note note = new Note();
+      note.setNote(information);
+      int n = note.getTotalNotes();
+      notes[n] = note;
 	}
 	
-	//hi
 	
 	public Note[] getNotes(){
 		return notes;
