@@ -126,6 +126,70 @@ public class LawFirm {
 		return User.getType();
 	}
 	
+	private static int secretaryMenu() {
+		int choice = 0;
+		boolean error = false;
+		do {
+			try { 
+				choice = Integer.parseInt(JOptionPane.showInputDialog(null, 
+				"Please choose an option from the list:"
+				+ "\n1.Create New Case \n2.Edit Case \n3.Search Cases \n4.Print \n5. Exit", 
+				"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE));
+				error = false;
+				if (choice < 1 || choice > 5) {
+					throw new IndexOutOfBoundsException();
+				}
+			}
+			catch(NumberFormatException e) {
+				JOptionPane.showMessageDialog(null,  "Please enter a valid #", 
+				"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+				error = true;
+			}
+			catch(IndexOutOfBoundsException e) {
+				JOptionPane.showMessageDialog(null,  "Please enter a valid #", 
+				"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+				error = true;
+			}
+			/*catch(NullPointerException e) {
+				error = true;
+				break;
+			}*/
+			} while(error == true);
+			return choice;
+	}
+	
+	
+	private static int adminMenu() {
+		int choice = 0;
+		boolean error = false;
+		do {
+			try { 
+				choice = Integer.parseInt(JOptionPane.showInputDialog(null, 
+				"Please choose an option from the list:"
+				+ "\n1.Edit Case \n2.Search Cases \n3.Print \n4.Exit", 
+				"JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE));
+				error = false;
+				if (choice < 1 || choice > 4) {
+					throw new IndexOutOfBoundsException();
+				}
+			}
+			catch(NumberFormatException e) {
+				JOptionPane.showMessageDialog(null,  "Please enter a valid #", 
+				"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+				error = true;
+			}
+			catch(IndexOutOfBoundsException e) {
+				JOptionPane.showMessageDialog(null,  "Please enter a valid #", 
+				"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+				error = true;
+			}
+			catch(NullPointerException e) {
+				return 5;
+			}
+		} while(error == true);
+		return choice+1;
+	}
+	
 	
 	private static Case addCase(Case [] cases) {
 		Case theCase = new Case();
