@@ -207,7 +207,12 @@ public class LawFirm {
 					num = Integer.parseInt(JOptionPane.showInputDialog(null, 
 					"Please enter the case number:", "JavaBeaners Law Firm", JOptionPane.QUESTION_MESSAGE));
 					System.out.println(error);
-					}
+               for (int i = 0; i < cases[0].getTotalCases(); i++) {
+                  if (num == cases[i].getCaseNum()) {
+                     throw new IndexOutOfBoundsException();
+                  }
+               }
+            }
 				catch(NumberFormatException e) {
 					JOptionPane.showMessageDialog(null,  "Please enter a valid #", 
 					"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
@@ -216,6 +221,11 @@ public class LawFirm {
 				catch(NullPointerException e) {
 				break;
 				}
+            catch (IndexOutOfBoundsException e) {
+              JOptionPane.showMessageDialog(null,  "That case number has already been added.", 
+					"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+					error = true;
+            }
 			} while(error);
 			
 			theCase.setCaseNum(num);
@@ -280,6 +290,7 @@ public class LawFirm {
 		}
 		return theCase;
 	}
+
 	
 	public static void edit(Case [] cases) {
 		String message = "Which case number would you like to edit";
