@@ -3,14 +3,24 @@ public class Note {
 
 	private String note;
 	private String lawyer;
+   private int totalNotes;
+   
+   public Note() {
+      totalNotes++;
+   }
 	
 	/**
 	 * Sets the note contents variable
 	 * @param note
+    
 	 */
 	public void setNote(String note){
 		this.note = note;
 	}
+   
+   public int getTotalNotes() {
+      return totalNotes;
+   }
 	
 	/**
 	 * Sets the lawyer variable
