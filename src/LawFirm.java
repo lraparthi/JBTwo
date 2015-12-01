@@ -277,12 +277,24 @@ public class LawFirm {
 				}
 			} while(error == true);
 			switch (status) {
-			case 1: 
-				theCase.setStatus("Accepted");
-				break;
-			case 2:
-				theCase.setStatus("Rejected");
-				break;
+				case 1: 
+					theCase.setStatus("Accepted");
+					break;
+				case 2:
+					theCase.setStatus("Rejected");
+					JOptionPane.showMessageDialog(null,  "Please enter a valid option", 
+					"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+            				String reason = "";
+            				do {
+        					reason = JOptionPane.showInputDialog(null, "Please enter the reason the case was rejected.",  
+               					JOptionPane.QUESTION_MESSAGE);
+               					if (reason.equals("")) {
+                  					JOptionPane.showMessageDialog(null,  "Please enter a valid rejected reason", 
+							"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+               					}
+            				} while( reason.equals(""));
+        				theCase.setReason(reason);
+					break;
 			case 3:
 				theCase.setStatus("Pending");
 				break;
