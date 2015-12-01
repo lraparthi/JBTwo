@@ -194,7 +194,7 @@ public class LawFirm {
 	}
 	
 	
-	private static Case addCase(Case [] cases) {
+		private static Case addCase(Case [] cases) {
 		Case theCase = new Case();
 		int num = 0;
 		if (theCase.getTotalCases() > cases.length) {
@@ -298,24 +298,53 @@ public class LawFirm {
 			case 2:
             theCase = (Accepted)theCase;
             int numLawyers = 0;
-             error = false;
+            boolean error = false;
             do {
                try {
                   numLawyers = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of lawyers.",  
                   JOptionPane.QUESTION_MESSAGE));
+                  if (numLawyers == 0) {
+                     error = true;
+                     JOptionPane.showMessageDialog(null,  "Please enter a valid number of lawyers", 
+					      "JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+                  }
                }
                catch (NumberFormatException e) {
                   JOptionPane.showMessageDialog(null,  "Please enter a valid number of lawyers", 
 					   "JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
                   error = true;
                }
-
-               if (reason.equals("")) {
-                  JOptionPane.showMessageDialog(null,  "Please enter a valid rejected reason", 
-					"JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+            } while(error == true);
+            int trialDays = 0;
+            do {
+               try {
+                  trialDays = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of trial days.",  
+                  JOptionPane.QUESTION_MESSAGE));
+                  if (trialDays == 0 || trialDays > 365) {
+                     error = true;
+                     JOptionPane.showMessageDialog(null,  "Please enter a valid number of trial days", 
+					      "JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+                  }
                }
-            } while( reason.equals(""));
-
+               catch (NumberFormatException e) {
+                  JOptionPane.showMessageDialog(null,  "Please enter a valid number of trial days", 
+					   "JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+                  error = true;
+               }
+            } while(error == true);
+            theCase.setNumDaysTrial(trialDays);
+            String court = "";
+            do {
+               court = JOptionPane.showInputDialog(null, "Please enter the number of trial days.",  
+               JOptionPane.QUESTION_MESSAGE);
+               error = false;
+               if (court.equals("")) {
+                  error = true;
+                  JOptionPane.showMessageDialog(null,  "Please enter a valid number of trial days", 
+					   "JavaBeaners Law Firm", JOptionPane.ERROR_MESSAGE);
+               }
+            } while(error == true);
+            theCase.setCourthouseName(court);
 				break;
 			case 3:
 				theCase = (Case)theCase;
