@@ -312,6 +312,40 @@ public class LawFirm {
 				listPend.add(aCase);
 			}
 		}
+		String[] options = new String[listPend.size()];
+		message += String.format("%8s%32s\n", "Case Num",  "Case Name");
+		for (int i = 0; i < listPend.size(); i++){
+			options[i] = ((Integer) listPend.get(i).getCaseNum()).toString();
+			message += String.format("%8d%32s\n", listPend.get(i).getCaseNum(),  listPend.get(i).getTitle());
+		}
+		
+		String option = (String) JOptionPane.showInputDialog(null, message, "Select a Case",  JOptionPane.QUESTION_MESSAGE, null, options, null);
+		
+		Case selected = null;
+		for (Case aCase : listPend){
+			if(Integer.parseInt(option) == (aCase.getCaseNum())){			
+				selected = aCase;
+				break;
+			}
+		}
+		
+		String[] statuses = {"Accepted", "Rejected", "Cancel"};
+		int status = JOptionPane.showOptionDialog(null, "What is the new status of this case?", "Set Status", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, statuses, null);
+		switch (status){
+		case 0:
+			JOptionPane.showMessageDialog(null, "Status changed to 'Accepted'.");
+			//cast to accepted
+			//setAccepted();
+			break;
+		case 1:
+			JOptionPane.showMessageDialog(null, "Status changed to 'Rejected'.");
+			//cast to rejected
+			//setRejected();
+			break;
+		default:
+			JOptionPane.showMessageDialog(null, "Status change cancelled.");
+			break;
+		}
 
 	}
 	
